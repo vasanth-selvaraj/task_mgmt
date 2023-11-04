@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { TaskListContext } from "../Context/ContextExport";
 import TaskCard from "../Components/TaskCard";
@@ -80,7 +81,7 @@ const Dashboard = () => {
             if (task.state.includes(filter)) {
               return <TaskCard key={idx} task={task} />;
             } else {
-              return <></>;
+              return <React.Fragment key={idx}></React.Fragment>;
             }
           })}
         </div>
