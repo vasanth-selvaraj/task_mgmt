@@ -6,7 +6,7 @@ const TaskListProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
 
   useEffect(()=>{
-    const tasks = localStorage.getItem("taskList")
+    const tasks = JSON.parse(localStorage.getItem("taskList"))
     if(tasks){
         setTaskList(tasks)
     }

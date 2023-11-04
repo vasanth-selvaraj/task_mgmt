@@ -108,7 +108,7 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
               <NavLink
                 to={`/new-task/${uuid().substring(0, 12)}`}
                 className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
-                  Location.pathname.includes("task")
+                  Location.pathname.includes("new-task")
                     ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
                     : ""
                 }`}
@@ -287,6 +287,34 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
                       </svg>
                     </div>
                     <div className="px-2">Dashboard</div>
+                  </NavLink>
+                </div>
+                <div className="w-full py-1 flex justify-center items-center">
+                  <NavLink
+                    to={`/new-task/${uuid().substring(0, 12)}`}
+                    className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
+                      Location.pathname.includes("new-task")
+                        ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
+                        : ""
+                    }`}
+                  >
+                    <div className="px-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </div>
+                    <div className="pl-2">New Task</div>
                   </NavLink>
                 </div>
                 <div className="w-full py-1 flex justify-center items-center">
