@@ -26,7 +26,6 @@ const Task = () => {
   useEffect(() => {
     if (!Location.pathname.includes("new-task")) {
       taskList.forEach((task) => {
-        console.log(task);
         task.id === id && setTask(task);
       });
     }
