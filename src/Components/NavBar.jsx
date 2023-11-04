@@ -1,12 +1,11 @@
 import { NavLink, useLocation } from "react-router-dom";
 import DarkLogo from "../Assets/logo-dark.png";
-import { useState, useEffect, useContext } from "react";
+import { v4 as uuid } from "uuid";
+import { useEffect, useContext } from "react";
 import { ThemeContext } from "../Context/ContextExport";
 
-const Navbar = () => {
+const Navbar = ({ openNavbar, setOpenNavbar }) => {
   const Location = useLocation();
-
-  const [openNavbar, setOpenNavbar] = useState(true);
 
   const { theme, handleTheme } = useContext(ThemeContext);
 
@@ -22,7 +21,6 @@ const Navbar = () => {
     }
   }, [theme]);
 
-  console.log(window.innerWidth);
   return (
     <>
       {/* {window.innerWidth > 800 ? ( */}
@@ -55,7 +53,7 @@ const Navbar = () => {
             </svg>
           </div>
         </>
-        <div className=" h-full w-full flex flex-col gap-12">
+        <div className=" w-full flex flex-col gap-12">
           <div className="w-full flex mt-10 justify-center">
             {theme === "light" ? (
               <img
@@ -104,6 +102,34 @@ const Navbar = () => {
                   </svg>
                 </div>
                 <div className="px-2">Dashboard</div>
+              </NavLink>
+            </div>
+            <div className="w-full py-1 flex justify-center items-center">
+              <NavLink
+                to={`/new-task/${uuid().substring(0, 12)}`}
+                className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
+                  Location.pathname.includes("task")
+                    ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
+                    : ""
+                }`}
+              >
+                <div className="px-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15"
+                    />
+                  </svg>
+                </div>
+                <div className="pl-2">New Task</div>
               </NavLink>
             </div>
             <div className="w-full py-1 flex justify-center items-center">
@@ -180,13 +206,13 @@ const Navbar = () => {
           ></div>
         )}
         <div
-          className={`h-full fixed bg-white shadow-xl flex md:hidden rounded-tr transition-all ease-in duration-150 z-50 ${
+          className={`h-full fixed bg-white dark:bg-neutral-900 shadow-xl flex md:hidden rounded-tr transition-all ease-in duration-150 z-50 ${
             openNavbar ? "w-[150px]" : " w-0"
           }`}
         >
           <div
             className={`h-[90%] w-[150px] flex flex-col transition-all ease-in duration-150 justify-between ${
-              !openNavbar ? "ml-0" : "ml-[-150px]"
+              openNavbar ? "ml-0" : "ml-[-150px]"
             }`}
           >
             <>
@@ -201,7 +227,7 @@ const Navbar = () => {
                   strokeWidth="2"
                   stroke="currentColor"
                   className={`w-5 h-5 cursor-pointer  ease-in transition-all duration-150 ${
-                    openNavbar ? "rotate-0" : "rotate-180"
+                    !openNavbar ? "rotate-0" : "rotate-180"
                   }`}
                 >
                   <path
@@ -214,11 +240,19 @@ const Navbar = () => {
             </>
             <div className=" h-full w-full flex flex-col gap-12">
               <div className="w-full flex mt-10 justify-center">
-                <img
-                  className="w-[80%] cursor-pointer"
-                  src={DarkLogo}
-                  alt="p3fusion logo"
-                />
+                {theme === "light" ? (
+                  <img
+                    className="w-[80%] cursor-pointer"
+                    src={DarkLogo}
+                    alt="p3fusion logo"
+                  />
+                ) : (
+                  <img
+                    className="w-[80%] cursor-pointer"
+                    src="https://www.p3fusion.com/images/logo-white.png"
+                    alt="p3fusion logo"
+                  />
+                )}
               </div>
               <div className="w-full mt-10 text-[15px] flex flex-col">
                 <div className="w-full py-1 flex justify-center items-center">

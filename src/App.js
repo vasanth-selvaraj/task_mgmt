@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/layout";
-import { Dashboard, TaskList } from "./Pages/PagesExport";
+import { Dashboard, TaskList, Task } from "./Pages/PagesExport";
 
 function App() {
   return (
@@ -18,6 +18,22 @@ function App() {
         element={
           <Layout>
             <TaskList />
+          </Layout>
+        }
+      />
+      <Route
+        path="/new-task/:id"
+        element={
+          <Layout>
+            <Task />
+          </Layout>
+        }
+      />
+      <Route
+        path="/task/:id"
+        element={
+          <Layout>
+            <Task />
           </Layout>
         }
       />
