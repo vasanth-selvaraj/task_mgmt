@@ -56,8 +56,10 @@ const TaskList = () => {
         setCheckedTasks([]);
         break;
       case "Delete":
-        console.log("dee")
-        updatedTaskList = updatedTaskList.filter((task) => !checkedTasks.includes(task.id));
+        console.log("dee");
+        updatedTaskList = updatedTaskList.filter(
+          (task) => !checkedTasks.includes(task.id)
+        );
         break;
       default:
         break;
@@ -108,6 +110,12 @@ const TaskList = () => {
               onChange={(e) => setDynamicFunction(e.target.value)}
               className="col-span-4 sm:text-sm text-xs p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
             >
+              <option
+                value=""
+                className="bg-white sm:text-sm text-xs dark:bg-neutral-800"
+              >
+                Select
+              </option>
               <option
                 value="Completed"
                 className="bg-white sm:text-sm text-xs dark:bg-neutral-800"

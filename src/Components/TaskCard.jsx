@@ -35,15 +35,16 @@ const TaskCard = ({ task, fromList, checkedTasks, setCheckedTasks }) => {
       )}
       <div
         onClick={() => history(`/task/${task.id}`)}
-        className="col-span-1 hidden group-hover:flex justify-center items-center py-[2px] cursor-pointer bg-gray-200 dark:bg-neutral-800 rounded"
+        className="col-span-1 hidden group-hover:flex w-14 gap-1 pl-1 items-center py-[2px] cursor-pointer bg-gray-200 dark:bg-neutral-800 rounded"
       >
+        <h3 className="text-xs">Open</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="h-4 w-4"
+          className="h-3.5 w-3.5"
         >
           <path
             strokeLinecap="round"
