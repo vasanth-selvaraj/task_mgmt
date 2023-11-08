@@ -90,7 +90,7 @@ const Task = () => {
               <input
                 value={task.id}
                 disabled
-                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-7 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>
             <div className="grid grid-cols-7 items-center">
@@ -99,7 +99,7 @@ const Task = () => {
               <input
                 value={task.name}
                 onChange={(e) => setTask({ ...task, name: e.target.value })}
-                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-7 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>
             {!Location.pathname.includes("new-task") && (
@@ -109,7 +109,7 @@ const Task = () => {
                 <select
                   value={task.state}
                   onChange={(e) => setTask({ ...task, state: e.target.value })}
-                  className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                  className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-7 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
                 >
                   <option className="bg-white dark:bg-neutral-800">
                     Select
@@ -146,7 +146,7 @@ const Task = () => {
                     description: e.target.value,
                   })
                 }
-                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-12 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>
             <div className="grid grid-cols-7 items-center">
@@ -160,7 +160,7 @@ const Task = () => {
                     comment: e.target.value,
                   })
                 }
-                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-12 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>
             <div className="grid grid-cols-7 items-center">
@@ -175,7 +175,7 @@ const Task = () => {
                   })
                 }
                 type="date"
-                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
+                className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-7 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>
             <div className="flex gap-12 px-4 py-2">

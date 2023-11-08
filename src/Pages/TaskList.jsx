@@ -39,10 +39,10 @@ const TaskList = () => {
         });
         setCheckedTasks([]);
         break;
-      case "ToDo":
+      case "To Do":
         updatedTaskList.forEach((task) => {
           if (checkedTasks.includes(task.id)) {
-            task.state = "ToDo";
+            task.state = "To Do";
           }
         });
         setCheckedTasks([]);
@@ -123,7 +123,7 @@ const TaskList = () => {
                 Completed
               </option>
               <option
-                value="ToDo"
+                value="To Do"
                 className="bg-white sm:text-sm text-xs dark:bg-neutral-800"
               >
                 To Do

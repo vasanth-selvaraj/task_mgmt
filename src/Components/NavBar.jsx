@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import DarkLogo from "../Assets/logo-dark.png";
 import { v4 as uuid } from "uuid";
 import { useEffect, useContext } from "react";
@@ -6,6 +6,7 @@ import { ThemeContext } from "../Context/ContextExport";
 
 const Navbar = ({ openNavbar, setOpenNavbar }) => {
   const Location = useLocation();
+  const history = useNavigate();
 
   const { theme, handleTheme } = useContext(ThemeContext);
 
@@ -256,8 +257,11 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
               </div>
               <div className="w-full mt-10 text-[15px] flex flex-col">
                 <div className="w-full py-1 flex justify-center items-center">
-                  <NavLink
-                    to="/"
+                  <div
+                    onClick={() => {
+                      setOpenNavbar(false);
+                      history("/");
+                    }}
                     className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.08)] cursor-pointer w-[95%] ${
                       Location.pathname.includes("dashboard") ||
                       Location.pathname === "/"
@@ -287,11 +291,15 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
                       </svg>
                     </div>
                     <div className="px-2">Dashboard</div>
-                  </NavLink>
+                  </div>
                 </div>
                 <div className="w-full py-1 flex justify-center items-center">
-                  <NavLink
-                    to={`/new-task/${uuid().substring(0, 12)}`}
+                  <div
+                    onClick={() => {
+                      setOpenNavbar(false);
+                      history(`/new-task/${uuid().substring(0, 12)}`);
+                    }}
+                    // to={`/new-task/${uuid().substring(0, 12)}`}
                     className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
                       Location.pathname.includes("new-task")
                         ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
@@ -315,11 +323,15 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
                       </svg>
                     </div>
                     <div className="pl-2">New Task</div>
-                  </NavLink>
+                  </div>
                 </div>
                 <div className="w-full py-1 flex justify-center items-center">
-                  <NavLink
-                    to="/task-list"
+                  <div
+                    // to="/task-list"
+                    onClick={() => {
+                      setOpenNavbar(false);
+                      history("/task-list");
+                    }}
                     className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
                       Location.pathname.includes("list")
                         ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
@@ -343,7 +355,7 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
                       </svg>
                     </div>
                     <div className="pl-2">Task List</div>
-                  </NavLink>
+                  </div>
                 </div>
               </div>
               <div className="w-full absolute bottom-0 flex justify-end">
