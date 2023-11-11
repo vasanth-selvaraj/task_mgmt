@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { TaskListContext } from "../Context/TaskListProvider";
+import { TaskListContext, TaskContext } from "../Context/ContextExport";
 import StateCue from "../Components/StatusCue";
 import { ValidateTaskForm } from "../Validation/validateForm";
 
@@ -10,26 +10,27 @@ const Task = () => {
   const history = useNavigate();
   const { id } = useParams();
   const { taskList, setTaskList } = useContext(TaskListContext);
+  const { task, setTask } = useContext(TaskContext);
   const [error, setError] = useState("");
-
-  const [task, setTask] = useState({
-    id: id,
-    name: "",
-    description: "",
-    due_date: "",
-    comment: "",
-    comments: [],
-    state: "To Do",
-    completed_date: "",
-  });
 
   useEffect(() => {
     if (!Location.pathname.includes("new-task")) {
-      taskList.forEach((task) => {
-        task.id === id && setTask(task);
+      taskList.forEach((t) => {
+        t.id === id && setTask(t);
+      });
+    } else {
+      setTask({
+        id: id,
+        name: "",
+        description: "",
+        due_date: "",
+        comment: "",
+        comments: [],
+        state: "To Do",
+        completed_date: "",
       });
     }
-  }, [Location, id, taskList]);
+  }, [Location, id, taskList, setTask]);
 
   const handleSaveTask = (e) => {
     e.preventDefault();
@@ -90,6 +91,7 @@ const Task = () => {
               <input
                 value={task.id}
                 disabled
+                readOnly
                 className="col-span-4 p-1 rounded bg-transparent border-gray-200 dark:border-neutral-800 border h-7 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-300 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:dark:bg-neutral-800"
               />
             </div>

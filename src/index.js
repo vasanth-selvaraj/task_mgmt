@@ -4,14 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
-import { ThemeProvider, TaskListProvider } from "./Context/ContextExport";
+import {
+  ThemeProvider,
+  TaskListProvider,
+  TaskProvider,
+} from "./Context/ContextExport";
 // basename={window.location.pathname || ""}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <HashRouter >
+  <HashRouter>
     <ThemeProvider>
       <TaskListProvider>
-        <App />
+        <TaskProvider>
+          <App />
+        </TaskProvider>
       </TaskListProvider>
     </ThemeProvider>
   </HashRouter>

@@ -2,13 +2,14 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import DarkLogo from "../Assets/logo-dark.png";
 import { v4 as uuid } from "uuid";
 import { useEffect, useContext } from "react";
-import { ThemeContext } from "../Context/ContextExport";
+import { ThemeContext, TaskContext } from "../Context/ContextExport";
 
 const Navbar = ({ openNavbar, setOpenNavbar }) => {
   const Location = useLocation();
   const history = useNavigate();
 
   const { theme, handleTheme } = useContext(ThemeContext);
+  const { setTask } = useContext(TaskContext);
 
   const handleNavbar = () => {
     setOpenNavbar(!openNavbar);
@@ -21,6 +22,16 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
       document.documentElement.classList.remove("dark");
     }
   }, [theme]);
+
+  function handleNavigate() {
+    const id = uuid().substring(0, 12);
+    // to={`/new-task/${uuid().substring(0, 12)}`}
+    setTask((prev) => ({
+      ...prev,
+      id: id,
+    }));
+    history(`/new-task/${id}`);
+  }
 
   return (
     <>
@@ -106,8 +117,8 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
               </NavLink>
             </div>
             <div className="w-full py-1 flex justify-center items-center">
-              <NavLink
-                to={`/new-task/${uuid().substring(0, 12)}`}
+              <div
+                onClick={() => handleNavigate()}
                 className={`py-1 flex rounded-lg hover:bg-[rgb(57,57,43,0.08)] dark:hover:bg-[rgb-(255,255,255,0.055)] cursor-pointer w-[95%] ${
                   Location.pathname.includes("new-task")
                     ? "bg-[rgb(241,241,240)] text-[rgb(55,53,47)] dark:text-[rgba(255,255,255,0.81)] dark:bg-[rgb(44,44,44)]"
@@ -131,7 +142,7 @@ const Navbar = ({ openNavbar, setOpenNavbar }) => {
                   </svg>
                 </div>
                 <div className="pl-2">New Task</div>
-              </NavLink>
+              </div>
             </div>
             <div className="w-full py-1 flex justify-center items-center">
               <NavLink
