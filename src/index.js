@@ -8,7 +8,7 @@ import { ThemeProvider, TaskListProvider } from "./Context/ContextExport";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename={window.location.pathname || ""}>
     <ThemeProvider>
       <TaskListProvider>
         <App />
