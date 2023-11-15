@@ -8,7 +8,7 @@ The **Task Management Dashboard** is a React-based web application that empowers
 
 1. **Clone the Repository:**
  ```bash
-   git clone [https://github.com/vasanth-selvaraj/task_mgmt.git](https://github.com/vasanth-selvaraj/task_mgmt.git)
+   git clone https://github.com/vasanth-selvaraj/task_mgmt.git
    cd task-management-dashboard
 ```
 2. **Install Dependencies:**
